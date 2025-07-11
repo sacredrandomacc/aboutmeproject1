@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="About Me - Skbidi's Personal Webpage" />
   <meta name="theme-color" content="#00ffff" />
   <title>About Me - Skbidi</title>
   <link rel="icon" href="https://fav.farm/💻" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -20,6 +20,7 @@
       background: #0f0f0f;
       color: #fff;
       overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
     }
     nav {
       background: #1a1a1a;
@@ -32,17 +33,24 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 0 10px #00ffff22;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      transform: perspective(1000px) translateZ(0);
+      border-radius: 0 0 20px 20px;
+      transition: background 0.3s;
     }
     nav a {
       color: #fff;
       margin: 0.5em;
       text-decoration: none;
-      transition: color 0.3s;
-      white-space: nowrap;
+      transition: color 0.3s, transform 0.3s;
+      font-weight: 600;
+      text-shadow: 0 0 5px #00ffff;
     }
     nav a:hover {
       color: #00ffff;
+      transform: scale(1.1);
+      text-shadow: 0 0 10px #00ffff;
     }
     header {
       height: 100vh;
@@ -52,233 +60,417 @@
       text-align: center;
       background: rgba(0, 0, 0, 0.8);
       padding: 0 1em;
+      position: relative;
+      overflow: hidden;
     }
     header h1 {
       font-size: 4em;
       line-height: 1.2;
+      animation: fadeIn 2s ease-out forwards;
+      text-shadow: 0 0 20px #00ffff;
     }
-    section {
-      padding: 5em 2em;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .socials a {
-      display: inline-block;
-      margin: 1em;
-      padding: 1em 2em;
-      background: #222;
-      border-radius: 10px;
-      color: #00ffff;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .socials a:hover {
-      background: #00ffff;
-      color: #000;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #00ffff88;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2em;
-    }
-    .project-card {
-      background: #1c1c1c;
-      border-radius: 15px;
-      padding: 2em;
-      box-shadow: 0 0 10px #00ffff11;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #00ffff44;
-    }
-    footer {
-      text-align: center;
-      padding: 2em;
-      background: #111;
-    }
-    #particles-js {
+    .music-toggle {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    #backToTop {
-      position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
-      background: #00ffff;
-      color: #000;
-      border: none;
-      padding: 0.8em 1.2em;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00ffff88;
-      display: none;
-    }
-    .extra-section {
-      padding: 5em 2em;
-      background-color: #181818;
-      text-align: center;
-    }
-    .extra-section h2 {
-      margin-bottom: 1em;
-      color: #00ffff;
-    }
-    .extra-section p {
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    .theme-toggle {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
       background: #222;
       color: #fff;
       border: none;
       padding: 0.6em 1em;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 0 8px #00ffff44;
-      z-index: 1001;
+      z-index: 1002;
+      box-shadow: 0 0 8px #00ffff;
+      transition: background 0.3s, color 0.3s;
     }
+    .music-toggle:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    #themeToggle {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 0.6em 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1002;
+      box-shadow: 0 0 8px #00ffff;
+      transition: background 0.3s, color 0.3s;
+    }
+    #themeToggle:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    audio { display: none; }
     .light-mode {
-      background: #f2f2f2;
+      background: #f0f9ff;
       color: #111;
     }
     .light-mode nav {
-      background: #eee;
+      background: #e3f2fd;
       color: #111;
+      box-shadow: 0 10px 30px rgba(0, 128, 128, 0.3);
     }
-    .light-mode .socials a {
-      background: #ddd;
+    .light-mode nav a {
       color: #007777;
+      text-shadow: none;
     }
-    .light-mode .project-card {
-      background: #fff;
+    .light-mode nav a:hover {
+      color: #004d4d;
+      text-shadow: none;
+    }
+    .light-mode .music-toggle,
+    .light-mode #themeToggle {
+      background: #007777;
+      color: #fff;
+      box-shadow: 0 0 8px #004d4d;
+    }
+    .light-mode .music-toggle:hover,
+    .light-mode #themeToggle:hover {
+      background: #004d4d;
+      color: #fff;
+    }
+    .extra-section {
+      max-width: 900px;
+      margin: 3em auto;
+      padding: 1.5em 1em;
+      background: rgba(10, 10, 10, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffff;
+      transition: background 0.3s, color 0.3s;
+    }
+    .light-mode .extra-section {
+      background-color: #d9f0ff;
       color: #111;
+      box-shadow: 0 0 20px #007777;
+    }
+    .extra-section h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 10px #00ffff;
+      transition: color 0.3s;
+    }
+    .extra-section p {
+      line-height: 1.5;
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+    #blog-posts article {
+      margin-bottom: 1.5em;
+      padding: 1em;
+      background: #222;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffff;
+      transition: background 0.3s, color 0.3s;
+    }
+    .light-mode #blog-posts article {
+      background: #c0e8ff;
+      color: #111;
+      box-shadow: 0 0 10px #007777;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+    form input {
+      padding: 0.6em 1em;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      flex: 1 1 300px;
+      max-width: 400px;
+      box-shadow: inset 0 0 5px #00ffff;
+      transition: box-shadow 0.3s;
+    }
+    form input:focus {
+      outline: none;
+      box-shadow: inset 0 0 12px #00ffff;
+    }
+    form button {
+      background: #00ffff;
+      border: none;
+      padding: 0.6em 1.5em;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffff;
+      transition: background 0.3s, color 0.3s;
+      flex: 0 0 auto;
+    }
+    form button:hover {
+      background: #009999;
+      color: #fff;
+    }
+    #requestStatus {
+      text-align: center;
+      margin-top: 0.8em;
+      font-weight: 600;
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+    #statusText {
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.4;
+      margin-top: 0.5em;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    #statusText a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    #statusText a:hover {
+      text-decoration: underline;
+    }
+    #statusText img {
+      display: block;
+      margin: 1em auto 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffff;
+      max-width: 150px;
+      transition: transform 0.3s;
+    }
+    #statusText img:hover {
+      transform: scale(1.05);
+    }
+    /* Particles container full screen behind content */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-
   <nav>
-    <div><strong>Skbidi</strong></div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#socials">Socials</a>
-      <a href="#projects">Projects</a>
-      <a href="#vent">Vent</a>
-      <a href="#spotify">Spotify</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <a href="#home">Home</a>
+    <a href="#blog">Blog</a>
+    <a href="#song-requests">Request a Song</a>
+    <a href="#status">Now Playing</a>
   </nav>
 
   <header id="home">
-    <h1 data-aos="fade-up">Yo, I'm Skbidi<br>Welcome to My World</h1>
+    <h1 data-aos="fade-up">Welcome to Skbidi's About Me</h1>
   </header>
 
-  <section id="socials">
-    <h2 data-aos="fade-right">Find Me Online</h2>
-    <div class="socials" data-aos="fade-up">
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-      <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
-      <a href="https://youtube.com/@yourchannel" target="_blank">YouTube</a>
+  <div id="particles-js"></div>
+
+  <audio id="lofiPlayer" loop autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_90a9c90f97.mp3" type="audio/mp3" />
+  </audio>
+
+  <button class="music-toggle" onclick="toggleMusic()">🔊 Music On</button>
+  <button id="themeToggle">Toggle Theme</button>
+
+  <section id="blog" class="extra-section" data-aos="fade-up" data-aos-delay="100">
+    <h2>📝 Blog</h2>
+    <p>Thoughts, updates, and personal reflections.</p>
+    <div id="blog-posts">
+      <article>
+        <h3>Loading blog posts...</h3>
+      </article>
     </div>
   </section>
 
-  <section id="projects">
-    <h2 data-aos="fade-left">My Projects</h2>
-    <div class="projects" data-aos="zoom-in">
-      <div class="project-card">
-        <h3>Anti-Crime Bin</h3>
-        <p>A fully legal investigative report platform focused on Discord crime awareness.</p>
-      </div>
-      <div class="project-card">
-        <h3>Brute Locator</h3>
-        <p>IP intelligence tool with dark UI and offline logging.</p>
-      </div>
-      <div class="project-card">
-        <h3>373 Database</h3>
-        <p>An old-school directory for sharing how websites and systems work.</p>
-      </div>
-    </div>
+  <section id="song-requests" class="extra-section" data-aos="fade-up" data-aos-delay="200">
+    <h2>🎶 Request a Song</h2>
+    <form id="songRequestForm">
+      <input type="text" id="songName" name="songName" placeholder="Enter a song title" required />
+      <input type="text" id="songLink" name="songLink" placeholder="Spotify/YouTube link" required />
+      <button type="submit">Submit Request</button>
+    </form>
+    <p id="requestStatus"></p>
   </section>
 
-  <section id="vent" class="extra-section">
-    <h2>⚠️ Vent Page Warning</h2>
-    <p style="color: #ff5555; font-weight: bold;">
-      This page discusses mental health, violence, emotional instability, and bipolar disorder. Viewer discretion is advised.
-    </p>
-    <div style="margin-top: 2em; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-      <h3>Understanding Me</h3>
-      <p>
-        I live with bipolar disorder. It’s not a personality quirk, it’s a real battle — a pendulum swinging between bursts of impossible energy and creative fire, then crashing into days where I can’t move or feel anything but fog. I’m not dangerous. I’m not unstable. But the highs and lows feel like war inside my head.
-      </p>
-      <p>
-        There are times where my thoughts spiral into places I wish they wouldn’t — violent, overwhelming, intrusive. I don’t act on them. But they’re there. That’s the part that scares me the most: not always feeling in control of my mind.
-      </p>
-      <p>
-        This isn’t for sympathy. It’s for honesty. You can’t know me from code, particles, and UI alone. This is the unfiltered me. I use this page as an outlet — to vent, to feel, to survive.
-      </p>
-      <p>
-        If you deal with similar feelings — you’re not alone. And if you’ve never felt this, thank you for reading anyway. It means something.
-      </p>
-      <p style="margin-top: 2em; color: #888; font-size: 0.9em;">
-        If you're struggling, please seek help. In the US, call or text <strong>988</strong> for mental health support.
-      </p>
-    </div>
+  <section id="status" class="extra-section" data-aos="fade-up" data-aos-delay="300">
+    <h2>📡 Current Status</h2>
+    <p id="statusText">Loading Spotify Now Playing status...</p>
   </section>
-
-  <section id="spotify" class="extra-section">
-    <h2>🎵 My Favorite Spotify Tracks</h2>
-    <p>These are some of the songs that hit different lately. I update this section with tracks I vibe with the most.</p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin-top: 2em;">
-      <!-- Replace the embed URLs with your own favorite Spotify tracks -->
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0VjIjW4GlUZAMYd2vXMi3b?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5nujrmhLZl6K0h6W5gVY9C?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 data-aos="fade-right">Contact</h2>
-    <p data-aos="fade-up">Email me at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Skbidi. All rights reserved.</p>
-  </footer>
-
-  <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Top</button>
-  <button id="themeToggle" class="theme-toggle">Toggle Theme</button>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     AOS.init();
 
-    window.addEventListener("load", () => {
-      particlesJS.load("particles-js", "https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json", function() {
-        console.log("Particles.js config loaded.");
+    // Lo-fi music toggle
+    const player = document.getElementById('lofiPlayer');
+    const musicBtn = document.querySelector('.music-toggle');
+    let playing = true;
+    function toggleMusic() {
+      playing = !playing;
+      if (playing) {
+        player.play();
+        musicBtn.innerText = '🔊 Music On';
+      } else {
+        player.pause();
+        musicBtn.innerText = '🔇 Music Off';
+      }
+    }
+
+    // Load particles as snow
+    function loadParticles(light = false) {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 150 },
+          color: { value: light ? "#cccccc" : "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: 4 },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "bottom",
+            straight: false
+          }
+        },
+        interactivity: {
+          events: {
+            onhover: { enable: false },
+            onclick: { enable: false }
+          }
+        },
+        retina_detect: true
       });
-    });
+    }
 
-    window.onscroll = function () {
-      const btn = document.getElementById("backToTop");
-      btn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
+    // Load saved theme & particles
+    function applySavedTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        loadParticles(true);
+      } else {
+        loadParticles();
+      }
+    }
 
+    applySavedTheme();
+
+    // Toggle theme & save preference
     const toggleButton = document.getElementById("themeToggle");
     toggleButton.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      loadParticles(isLight);
     });
+
+    // Load Blog posts from blog.json
+    fetch('blog.json')
+      .then(res => res.json())
+      .then(posts => {
+        const container = document.getElementById('blog-posts');
+        container.innerHTML = '';
+        posts.forEach(post => {
+          const article = document.createElement('article');
+          article.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+          container.appendChild(article);
+        });
+      })
+      .catch(() => {
+        const container = document.getElementById('blog-posts');
+        container.innerHTML = '<article><h3>Error loading blog posts.</h3></article>';
+      });
+
+    // Song request form with localStorage saving
+    document.getElementById('songRequestForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('songName').value.trim();
+      const link = document.getElementById('songLink').value.trim();
+      const status = document.getElementById('requestStatus');
+      if (!name || !link) {
+        status.textContent = 'Please fill both fields.';
+        return;
+      }
+      let stored = JSON.parse(localStorage.getItem('songRequests') || '[]');
+      stored.push({ name, link });
+      localStorage.setItem('songRequests', JSON.stringify(stored));
+      status.textContent = `✅ Your request for "${name}" has been saved!`;
+      this.reset();
+      setTimeout(() => { status.textContent = ''; }, 4000);
+    });
+
+    // Spotify OAuth & Now Playing
+    const CLIENT_ID = 'd3047bcac2d54d0dbfeca2da8ab744ac';
+    const REDIRECT_URI = 'https://aboutmeproject1-1.onrender.com/#home';
+    const SCOPES = 'user-read-currently-playing user-read-playback-state';
+
+    function getHashParams() {
+      let hash = window.location.hash.substring(1);
+      let params = {};
+      hash.split('&').forEach(kv => {
+        let [key, value] = kv.split('=');
+        if(key && value) params[key] = value;
+      });
+      return params;
+    }
+
+    function redirectToSpotifyAuth() {
+      const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES)}&response_type=token&show_dialog=true`;
+      window.location.href = authUrl;
+    }
+
+    function fetchNowPlaying(token) {
+      fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      })
+        .then(response => {
+          if (response.status === 204 || response.status > 400) {
+            document.getElementById('statusText').innerText = '🎵 Not currently playing anything.';
+            return null;
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (!data) return;
+          const track = data.item;
+          if (!track) {
+            document.getElementById('statusText').innerText = '🎵 Not currently playing anything.';
+            return;
+          }
+          const artists = track.artists.map(a => a.name).join(', ');
+          const trackName = track.name;
+          const albumImage = track.album.images[0].url;
+          const trackUrl = track.external_urls.spotify;
+          document.getElementById('statusText').innerHTML = `
+            <strong>Now Playing:</strong> <a href="${trackUrl}" target="_blank">${trackName}</a> by ${artists}
+            <br><img src="${albumImage}" alt="Album cover" />
+          `;
+        })
+        .catch(() => {
+          document.getElementById('statusText').innerText = '❌ Error fetching now playing.';
+        });
+    }
+
+    window.onload = () => {
+      const params = getHashParams();
+      const accessToken = params.access_token;
+
+      if (!accessToken) {
+        // No token, show login button
+        document.getElementById('statusText').innerHTML = `<button onclick="redirectToSpotifyAuth()" style="padding:1em; font-size:1em; cursor:pointer; border:none; border-radius:8px; background:#00ffff; color:#000;">Login with Spotify</button>`;
+      } else {
+        // Token present, fetch now playing every 30s
+        fetchNowPlaying(accessToken);
+        setInterval(() => fetchNowPlaying(accessToken), 30000);
+      }
+    };
   </script>
 </body>
 </html>
