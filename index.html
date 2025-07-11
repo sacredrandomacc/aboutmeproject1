@@ -3,474 +3,538 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="About Me - Skbidi's Personal Webpage" />
-  <meta name="theme-color" content="#00ffff" />
-  <title>About Me - Skbidi</title>
-  <link rel="icon" href="https://fav.farm/💻" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <title>Skbidi - About Me</title>
+  
+  <!-- SEO Meta -->
+  <meta name="description" content="Skbidi's personal portfolio - about me, projects, socials, and contact" />
+  <meta name="author" content="Skbidi" />
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://i.imgur.com/IyQG8Bw.png" type="image/png" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
   <style>
-    html {
-      scroll-behavior: smooth;
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
     }
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: #0f0f0f;
-      color: #fff;
-      overflow-x: hidden;
+      color: #ddd;
+      scroll-behavior: smooth;
       transition: background 0.3s, color 0.3s;
     }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #00bbbb;
+    }
+    h1, h2, h3 {
+      margin: 0 0 1rem 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    p {
+      line-height: 1.6;
+      font-weight: 300;
+      color: #bbb;
+    }
+    
+    /* Navbar */
     nav {
-      background: #1a1a1a;
-      padding: 1em 2em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #111111ee;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(6px);
-      transform: perspective(1000px) translateZ(0);
-      border-radius: 0 0 20px 20px;
-      transition: background 0.3s;
+      padding: 1rem 3rem;
+      z-index: 10000;
+      box-shadow: 0 0 10px #00ffff55;
     }
-    nav a {
-      color: #fff;
-      margin: 0.5em;
-      text-decoration: none;
-      transition: color 0.3s, transform 0.3s;
-      font-weight: 600;
-      text-shadow: 0 0 5px #00ffff;
-    }
-    nav a:hover {
+    nav .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
       color: #00ffff;
-      transform: scale(1.1);
-      text-shadow: 0 0 10px #00ffff;
+      cursor: default;
     }
-    header {
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      border-bottom: 2px solid #00ffff;
+    }
+    
+    /* Sections */
+    section {
+      max-width: 1000px;
+      margin: 100px auto 60px auto;
+      padding: 0 2rem;
+    }
+    
+    /* Home Section */
+    #home {
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 0 1em;
       position: relative;
-      overflow: hidden;
+      color: #00ffff;
     }
-    header h1 {
-      font-size: 4em;
-      line-height: 1.2;
-      animation: fadeIn 2s ease-out forwards;
-      text-shadow: 0 0 20px #00ffff;
+    #home h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00ffff, #008080, #00ffff);
+      background-size: 200% 200%;
+      animation: gradientMove 5s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
-    .music-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #222;
-      color: #fff;
-      border: none;
-      padding: 0.6em 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 1002;
-      box-shadow: 0 0 8px #00ffff;
-      transition: background 0.3s, color 0.3s;
-    }
-    .music-toggle:hover {
-      background: #00ffff;
-      color: #000;
-    }
-    #themeToggle {
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      background: #222;
-      color: #fff;
-      border: none;
-      padding: 0.6em 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 1002;
-      box-shadow: 0 0 8px #00ffff;
-      transition: background 0.3s, color 0.3s;
-    }
-    #themeToggle:hover {
-      background: #00ffff;
-      color: #000;
-    }
-    audio { display: none; }
-    .light-mode {
-      background: #f0f9ff;
-      color: #111;
-    }
-    .light-mode nav {
-      background: #e3f2fd;
-      color: #111;
-      box-shadow: 0 10px 30px rgba(0, 128, 128, 0.3);
-    }
-    .light-mode nav a {
-      color: #007777;
-      text-shadow: none;
-    }
-    .light-mode nav a:hover {
-      color: #004d4d;
-      text-shadow: none;
-    }
-    .light-mode .music-toggle,
-    .light-mode #themeToggle {
-      background: #007777;
-      color: #fff;
-      box-shadow: 0 0 8px #004d4d;
-    }
-    .light-mode .music-toggle:hover,
-    .light-mode #themeToggle:hover {
-      background: #004d4d;
-      color: #fff;
-    }
-    .extra-section {
-      max-width: 900px;
-      margin: 3em auto;
-      padding: 1.5em 1em;
-      background: rgba(10, 10, 10, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 0 20px #00ffff;
-      transition: background 0.3s, color 0.3s;
-    }
-    .light-mode .extra-section {
-      background-color: #d9f0ff;
-      color: #111;
-      box-shadow: 0 0 20px #007777;
-    }
-    .extra-section h2 {
-      text-align: center;
-      margin-bottom: 1em;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 10px #00ffff;
-      transition: color 0.3s;
-    }
-    .extra-section p {
-      line-height: 1.5;
-      font-size: 1.1em;
-      margin-bottom: 1em;
-    }
-    #blog-posts article {
-      margin-bottom: 1.5em;
-      padding: 1em;
-      background: #222;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00ffff;
-      transition: background 0.3s, color 0.3s;
-    }
-    .light-mode #blog-posts article {
-      background: #c0e8ff;
-      color: #111;
-      box-shadow: 0 0 10px #007777;
-    }
-    form {
+    
+    /* About Me */
+    #about {
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
-      justify-content: center;
+      gap: 3rem;
+      align-items: center;
+      color: #ccc;
     }
-    form input {
-      padding: 0.6em 1em;
-      font-size: 1em;
-      border-radius: 8px;
-      border: none;
+    #about .photo {
       flex: 1 1 300px;
-      max-width: 400px;
-      box-shadow: inset 0 0 5px #00ffff;
-      transition: box-shadow 0.3s;
+      max-width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #00ffffaa;
+      border: 3px solid #00ffffaa;
     }
-    form input:focus {
-      outline: none;
-      box-shadow: inset 0 0 12px #00ffff;
+    #about .photo img {
+      width: 100%;
+      display: block;
     }
-    form button {
-      background: #00ffff;
-      border: none;
-      padding: 0.6em 1.5em;
-      border-radius: 8px;
+    #about .bio {
+      flex: 2 1 400px;
+      font-size: 1.1rem;
+      color: #bbb;
+    }
+    #about .skills {
+      margin-top: 1rem;
+    }
+    #about .skills ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    #about .skills ul li {
+      background: #222;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
       font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 0 15px #00ffff;
-      transition: background 0.3s, color 0.3s;
-      flex: 0 0 auto;
+      color: #00ffff;
+      box-shadow: 0 0 8px #00ffff55;
+      user-select: none;
     }
-    form button:hover {
-      background: #009999;
+    
+    /* Projects */
+    #projects {
+      color: #ccc;
+    }
+    #projects .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    #projects .project-card {
+      background: #111111ee;
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 0 10px #00ffff55;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #projects .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #00ffffaa;
+    }
+    #projects .project-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    #projects .project-card h3 {
+      margin-bottom: 0.5rem;
+      color: #00ffff;
+    }
+    #projects .project-card p {
+      flex-grow: 1;
+      color: #aaa;
+      font-weight: 300;
+    }
+    #projects .project-card a {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #00ffff;
+      align-self: flex-start;
+    }
+    
+    /* Socials */
+    #socials {
+      text-align: center;
+    }
+    #socials .icons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    #socials .icons a {
+      color: #00ffff;
+      font-size: 2.5rem;
+      transition: color 0.3s;
+    }
+    #socials .icons a:hover {
+      color: #008080;
+    }
+    
+    /* Contact */
+    #contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: #ccc;
+    }
+    #contact label {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    #contact input, #contact textarea {
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: none;
+      background: #222;
+      color: #ccc;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: 2px solid #00ffff;
+      background: #1a1a1a;
+    }
+    #contact button {
+      padding: 1rem;
+      background: #00ffff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #contact button:hover {
+      background: #008080;
       color: #fff;
     }
-    #requestStatus {
+    
+    /* Footer */
+    footer {
       text-align: center;
-      margin-top: 0.8em;
-      font-weight: 600;
-      color: #00ffff;
-      text-shadow: 0 0 8px #00ffff;
+      padding: 2rem 1rem;
+      border-top: 1px solid #222;
+      color: #666;
+      font-size: 0.9rem;
+      user-select: none;
     }
-    #statusText {
-      text-align: center;
-      font-size: 1.2em;
-      line-height: 1.4;
-      margin-top: 0.5em;
-      text-shadow: 0 0 10px #00ffff;
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      #about .bio {
+        margin-top: 1rem;
+      }
+      #projects .project-list {
+        grid-template-columns: 1fr;
+      }
     }
-    #statusText a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: 700;
+    
+    /* Dark mode styles */
+    body.dark-mode {
+      background: #111;
+      color: #ccc;
     }
-    #statusText a:hover {
-      text-decoration: underline;
+    body.dark-mode nav {
+      background: #000000ee;
+      box-shadow: 0 0 10px #008080aa;
     }
-    #statusText img {
-      display: block;
-      margin: 1em auto 0 auto;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffff;
-      max-width: 150px;
-      transition: transform 0.3s;
+    body.dark-mode a {
+      color: #008080;
     }
-    #statusText img:hover {
-      transform: scale(1.05);
+    body.dark-mode a:hover {
+      color: #00cccc;
     }
-    /* Particles container full screen behind content */
-    #particles-js {
+    body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+      color: #008080;
+    }
+    body.dark-mode #about .skills ul li {
+      background: #005050;
+      box-shadow: 0 0 8px #008080aa;
+      color: #00cccc;
+    }
+    
+    /* Dark mode toggle button */
+    #darkToggle {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
+      bottom: 20px;
+      right: 20px;
+      background: #00ffff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffffbb;
+      transition: background 0.3s;
+      font-size: 1.4rem;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      z-index: 11000;
+    }
+    #darkToggle:hover {
+      background: #008080;
+      color: #fff;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#blog">Blog</a>
-    <a href="#song-requests">Request a Song</a>
-    <a href="#status">Now Playing</a>
-  </nav>
-
-  <header id="home">
-    <h1 data-aos="fade-up">Welcome to Skbidi's About Me</h1>
-  </header>
-
+  
+  <!-- Particle background -->
   <div id="particles-js"></div>
-
-  <audio id="lofiPlayer" loop autoplay>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_90a9c90f97.mp3" type="audio/mp3" />
-  </audio>
-
-  <button class="music-toggle" onclick="toggleMusic()">🔊 Music On</button>
-  <button id="themeToggle">Toggle Theme</button>
-
-  <section id="blog" class="extra-section" data-aos="fade-up" data-aos-delay="100">
-    <h2>📝 Blog</h2>
-    <p>Thoughts, updates, and personal reflections.</p>
-    <div id="blog-posts">
-      <article>
-        <h3>Loading blog posts...</h3>
-      </article>
+  
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Skbidi</div>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#socials">Socials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Sections -->
+  <section id="home" aria-label="Home section">
+    <h1>Hey, I'm Skbidi</h1>
+  </section>
+  
+  <section id="about" aria-label="About Me section">
+    <div class="photo" aria-label="Profile picture">
+      <img src="https://i.imgur.com/6bqzZ8Z.jpg" alt="Skbidi profile photo" />
+    </div>
+    <div class="bio">
+      <h2>About Me</h2>
+      <p>I'm a passionate developer, gamer, and tech enthusiast who loves creating cool web projects and sharing them with the community. I specialize in web design, front-end development, and UI/UX. When I'm not coding, you'll find me exploring new games or binge-watching tech reviews.</p>
+      <div class="skills">
+        <h3>Skills</h3>
+        <ul>
+          <li>HTML5 & CSS3</li>
+          <li>JavaScript (ES6+)</li>
+          <li>React & Vue</li>
+          <li>Node.js</li>
+          <li>Git & GitHub</li>
+          <li>UI/UX Design</li>
+        </ul>
+      </div>
     </div>
   </section>
-
-  <section id="song-requests" class="extra-section" data-aos="fade-up" data-aos-delay="200">
-    <h2>🎶 Request a Song</h2>
-    <form id="songRequestForm">
-      <input type="text" id="songName" name="songName" placeholder="Enter a song title" required />
-      <input type="text" id="songLink" name="songLink" placeholder="Spotify/YouTube link" required />
-      <button type="submit">Submit Request</button>
+  
+  <section id="projects" aria-label="Projects section">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project-card" tabindex="0" role="button" onclick="window.open('https://github.com/yourusername/project1', '_blank')">
+        <img src="https://via.placeholder.com/400x200/00ffff/000000?text=Project+1" alt="Project 1 screenshot" />
+        <h3>Project One</h3>
+        <p>A cutting-edge web app that lets users do amazing things effortlessly.</p>
+        <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="project-card" tabindex="0" role="button" onclick="window.open('https://github.com/yourusername/project2', '_blank')">
+        <img src="https://via.placeholder.com/400x200/008080/ffffff?text=Project+2" alt="Project 2 screenshot" />
+        <h3>Project Two</h3>
+        <p>An innovative tool for developers to boost productivity and collaboration.</p>
+        <a href="https://github.com/yourusername/project2" target="_blank" rel="noopener">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="project-card" tabindex="0" role="button" onclick="window.open('https://github.com/yourusername/project3', '_blank')">
+        <img src="https://via.placeholder.com/400x200/005050/ffffff?text=Project+3" alt="Project 3 screenshot" />
+        <h3>Project Three</h3>
+        <p>A sleek website template designed for creative portfolios and blogs.</p>
+        <a href="https://github.com/yourusername/project3" target="_blank" rel="noopener">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="socials" aria-label="Socials section">
+    <h2>Socials</h2>
+    <div class="icons" role="list">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://discord.gg/yourinvite" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+  
+  <section id="contact" aria-label="Contact section">
+    <h2>Contact Me</h2>
+    <form id="contactForm" novalidate>
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required minlength="2" />
+      
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+      
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required minlength="10"></textarea>
+      
+      <button type="submit">Send</button>
+      <p id="formFeedback" aria-live="polite" style="margin-top:1rem;"></p>
     </form>
-    <p id="requestStatus"></p>
   </section>
-
-  <section id="status" class="extra-section" data-aos="fade-up" data-aos-delay="300">
-    <h2>📡 Current Status</h2>
-    <p id="statusText">Loading Spotify Now Playing status...</p>
-  </section>
-
+  
+  <footer>
+    <p>&copy; 2025 Skbidi. All rights reserved.</p>
+  </footer>
+  
+  <!-- Dark mode toggle button -->
+  <button id="darkToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+  
+  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
   <script>
-    AOS.init();
-
-    // Lo-fi music toggle
-    const player = document.getElementById('lofiPlayer');
-    const musicBtn = document.querySelector('.music-toggle');
-    let playing = true;
-    function toggleMusic() {
-      playing = !playing;
-      if (playing) {
-        player.play();
-        musicBtn.innerText = '🔊 Music On';
-      } else {
-        player.pause();
-        musicBtn.innerText = '🔇 Music Off';
-      }
-    }
-
-    // Load particles as snow
-    function loadParticles(light = false) {
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 150 },
-          color: { value: light ? "#cccccc" : "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5 },
-          size: { value: 4 },
-          move: {
-            enable: true,
-            speed: 2,
-            direction: "bottom",
-            straight: false
-          }
+    // Particle config
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00ffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 140, color: "#00ffff", opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "bounce" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
         },
-        interactivity: {
-          events: {
-            onhover: { enable: false },
-            onclick: { enable: false }
-          }
-        },
-        retina_detect: true
-      });
-    }
-
-    // Load saved theme & particles
-    function applySavedTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        loadParticles(true);
-      } else {
-        loadParticles();
-      }
-    }
-
-    applySavedTheme();
-
-    // Toggle theme & save preference
-    const toggleButton = document.getElementById("themeToggle");
-    toggleButton.addEventListener("click", () => {
-      const isLight = document.body.classList.toggle("light-mode");
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      loadParticles(isLight);
+        modes: {
+          grab: { distance: 200, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
     });
-
-    // Load Blog posts from blog.json
-    fetch('blog.json')
-      .then(res => res.json())
-      .then(posts => {
-        const container = document.getElementById('blog-posts');
-        container.innerHTML = '';
-        posts.forEach(post => {
-          const article = document.createElement('article');
-          article.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-          container.appendChild(article);
-        });
-      })
-      .catch(() => {
-        const container = document.getElementById('blog-posts');
-        container.innerHTML = '<article><h3>Error loading blog posts.</h3></article>';
+    
+    // Smooth scroll active link highlight
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
       });
-
-    // Song request form with localStorage saving
-    document.getElementById('songRequestForm').addEventListener('submit', function (e) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Contact form validation (HTML5 plus custom feedback)
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('songName').value.trim();
-      const link = document.getElementById('songLink').value.trim();
-      const status = document.getElementById('requestStatus');
-      if (!name || !link) {
-        status.textContent = 'Please fill both fields.';
+      if (!form.checkValidity()) {
+        feedback.textContent = 'Please fill out all fields correctly.';
+        feedback.style.color = '#ff5555';
         return;
       }
-      let stored = JSON.parse(localStorage.getItem('songRequests') || '[]');
-      stored.push({ name, link });
-      localStorage.setItem('songRequests', JSON.stringify(stored));
-      status.textContent = `✅ Your request for "${name}" has been saved!`;
-      this.reset();
-      setTimeout(() => { status.textContent = ''; }, 4000);
+      feedback.style.color = '#00ffcc';
+      feedback.textContent = 'Thank you for your message! I will get back to you soon.';
+      form.reset();
     });
-
-    // Spotify OAuth & Now Playing
-    const CLIENT_ID = 'd3047bcac2d54d0dbfeca2da8ab744ac';
-    const REDIRECT_URI = 'https://aboutmeproject1-1.onrender.com/#home';
-    const SCOPES = 'user-read-currently-playing user-read-playback-state';
-
-    function getHashParams() {
-      let hash = window.location.hash.substring(1);
-      let params = {};
-      hash.split('&').forEach(kv => {
-        let [key, value] = kv.split('=');
-        if(key && value) params[key] = value;
-      });
-      return params;
-    }
-
-    function redirectToSpotifyAuth() {
-      const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES)}&response_type=token&show_dialog=true`;
-      window.location.href = authUrl;
-    }
-
-    function fetchNowPlaying(token) {
-      fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-        headers: { 'Authorization': 'Bearer ' + token }
-      })
-        .then(response => {
-          if (response.status === 204 || response.status > 400) {
-            document.getElementById('statusText').innerText = '🎵 Not currently playing anything.';
-            return null;
-          }
-          return response.json();
-        })
-        .then(data => {
-          if (!data) return;
-          const track = data.item;
-          if (!track) {
-            document.getElementById('statusText').innerText = '🎵 Not currently playing anything.';
-            return;
-          }
-          const artists = track.artists.map(a => a.name).join(', ');
-          const trackName = track.name;
-          const albumImage = track.album.images[0].url;
-          const trackUrl = track.external_urls.spotify;
-          document.getElementById('statusText').innerHTML = `
-            <strong>Now Playing:</strong> <a href="${trackUrl}" target="_blank">${trackName}</a> by ${artists}
-            <br><img src="${albumImage}" alt="Album cover" />
-          `;
-        })
-        .catch(() => {
-          document.getElementById('statusText').innerText = '❌ Error fetching now playing.';
-        });
-    }
-
-    window.onload = () => {
-      const params = getHashParams();
-      const accessToken = params.access_token;
-
-      if (!accessToken) {
-        // No token, show login button
-        document.getElementById('statusText').innerHTML = `<button onclick="redirectToSpotifyAuth()" style="padding:1em; font-size:1em; cursor:pointer; border:none; border-radius:8px; background:#00ffff; color:#000;">Login with Spotify</button>`;
+    
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
       } else {
-        // Token present, fetch now playing every 30s
-        fetchNowPlaying(accessToken);
-        setInterval(() => fetchNowPlaying(accessToken), 30000);
+        darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
       }
-    };
+    });
   </script>
 </body>
 </html>
