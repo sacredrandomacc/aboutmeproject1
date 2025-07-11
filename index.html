@@ -83,7 +83,7 @@
       border-radius: 15px;
       padding: 2em;
       box-shadow: 0 0 10px #00ffff11;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .project-card:hover {
       transform: translateY(-5px);
@@ -115,6 +115,20 @@
       cursor: pointer;
       box-shadow: 0 0 10px #00ffff88;
       display: none;
+    }
+    .extra-section {
+      padding: 5em 2em;
+      background-color: #181818;
+      text-align: center;
+    }
+    .extra-section h2 {
+      margin-bottom: 1em;
+      color: #00ffff;
+    }
+    .extra-section p {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -163,6 +177,11 @@
     </div>
   </section>
 
+  <section class="extra-section">
+    <h2>More About Me</h2>
+    <p>I love building things that are creepy, clever, and creative. Whether it’s tracking malicious activity or crafting beautiful UIs, I enjoy pushing boundaries. This site is a digital extension of everything I love: hacking, gaming, coding, and being a menace (legally of course).</p>
+  </section>
+
   <section id="contact">
     <h2 data-aos="fade-right">Contact</h2>
     <p data-aos="fade-up">Email me at: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
@@ -178,33 +197,39 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00ffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#00ffff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2 }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          grab: { distance: 200, line_linked: { opacity: 1 } },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: "#00ffff" },
+            shape: { type: "circle" },
+            opacity: { value: 0.6, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#00ffff", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 2 }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: { enable: true, mode: "grab" },
+              onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+              grab: { distance: 200, line_linked: { opacity: 1 } },
+              push: { particles_nb: 4 }
+            }
+          },
+          retina_detect: true
+        });
+      } else {
+        console.error("particles.js failed to load");
+      }
     });
+
     window.onscroll = function () {
       const btn = document.getElementById("backToTop");
-      if (window.scrollY > 300) btn.style.display = "block";
-      else btn.style.display = "none";
+      btn.style.display = window.scrollY > 300 ? "block" : "none";
     };
   </script>
 </body>
