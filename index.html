@@ -25,6 +25,7 @@
       background: #1a1a1a;
       padding: 1em 2em;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       position: fixed;
@@ -35,9 +36,10 @@
     }
     nav a {
       color: #fff;
-      margin: 0 1em;
+      margin: 0.5em;
       text-decoration: none;
       transition: color 0.3s;
+      white-space: nowrap;
     }
     nav a:hover {
       color: #00ffff;
@@ -49,6 +51,7 @@
       align-items: center;
       text-align: center;
       background: rgba(0, 0, 0, 0.8);
+      padding: 0 1em;
     }
     header h1 {
       font-size: 4em;
@@ -141,6 +144,23 @@
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 0 8px #00ffff44;
+      z-index: 1001;
+    }
+    .light-mode {
+      background: #f2f2f2;
+      color: #111;
+    }
+    .light-mode nav {
+      background: #eee;
+      color: #111;
+    }
+    .light-mode .socials a {
+      background: #ddd;
+      color: #007777;
+    }
+    .light-mode .project-card {
+      background: #fff;
+      color: #111;
     }
   </style>
 </head>
@@ -153,6 +173,8 @@
       <a href="#home">Home</a>
       <a href="#socials">Socials</a>
       <a href="#projects">Projects</a>
+      <a href="#vent">Vent</a>
+      <a href="#spotify">Spotify</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -189,9 +211,40 @@
     </div>
   </section>
 
-  <section class="extra-section">
-    <h2>More About Me</h2>
-    <p>I love building things that are creepy, clever, and creative. Whether it’s tracking malicious activity or crafting beautiful UIs, I enjoy pushing boundaries. This site is a digital extension of everything I love: hacking, gaming, coding, and being a menace (legally of course).</p>
+  <section id="vent" class="extra-section">
+    <h2>⚠️ Vent Page Warning</h2>
+    <p style="color: #ff5555; font-weight: bold;">
+      This page discusses mental health, violence, emotional instability, and bipolar disorder. Viewer discretion is advised.
+    </p>
+    <div style="margin-top: 2em; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+      <h3>Understanding Me</h3>
+      <p>
+        I live with bipolar disorder. It’s not a personality quirk, it’s a real battle — a pendulum swinging between bursts of impossible energy and creative fire, then crashing into days where I can’t move or feel anything but fog. I’m not dangerous. I’m not unstable. But the highs and lows feel like war inside my head.
+      </p>
+      <p>
+        There are times where my thoughts spiral into places I wish they wouldn’t — violent, overwhelming, intrusive. I don’t act on them. But they’re there. That’s the part that scares me the most: not always feeling in control of my mind.
+      </p>
+      <p>
+        This isn’t for sympathy. It’s for honesty. You can’t know me from code, particles, and UI alone. This is the unfiltered me. I use this page as an outlet — to vent, to feel, to survive.
+      </p>
+      <p>
+        If you deal with similar feelings — you’re not alone. And if you’ve never felt this, thank you for reading anyway. It means something.
+      </p>
+      <p style="margin-top: 2em; color: #888; font-size: 0.9em;">
+        If you're struggling, please seek help. In the US, call or text <strong>988</strong> for mental health support.
+      </p>
+    </div>
+  </section>
+
+  <section id="spotify" class="extra-section">
+    <h2>🎵 My Favorite Spotify Tracks</h2>
+    <p>These are some of the songs that hit different lately. I update this section with tracks I vibe with the most.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin-top: 2em;">
+      <!-- Replace the embed URLs with your own favorite Spotify tracks -->
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0VjIjW4GlUZAMYd2vXMi3b?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5nujrmhLZl6K0h6W5gVY9C?utm_source=generator" width="300" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
   </section>
 
   <section id="contact">
